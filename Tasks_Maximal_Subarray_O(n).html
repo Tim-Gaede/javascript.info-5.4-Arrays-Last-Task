@@ -8,19 +8,22 @@
     
  
     function getMaxSubSum(arr){
+
+        // left index
         let iL = indexNextPositive(arr, 0);
-        if (iL == arr.length){ return 0; }
+        if (iL == null){ return 0; }
         
         let sum = arr[iL];
         let res = sum;
-
+        
+        // right index
         let iR = iL+1;
         while (iR < arr.length){
             sum += arr[iR];
             if (sum <= 0){
                
                 iL = indexNextPositive(arr, iR+1);                
-                if (iL == arr.length){ return res; }
+                if (iL == null){ return res; }
                 
                 sum = arr[iL];
                 iR = iL;
@@ -41,7 +44,7 @@
                 return i;
             }
         }
-        return arr.length;
+        return null;
     }
 
     
