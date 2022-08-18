@@ -19,9 +19,9 @@
             sum += arr[iR];
             if (sum <= 0){
                
-                iL = indexNextPositive(arr, iR+1);
-                
+                iL = indexNextPositive(arr, iR+1);                
                 if (iL == arr.length){ return res; }
+                
                 sum = arr[iL];
                 iR = iL;
             }
