@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>        
+    </head>
+<body>
+ <script>
+    "use strict";
+    
+ 
+    function getMaxSubSum(arr){
+        let iL = indexNextPositive(arr, 0);
+        if (iL == arr.length){ return 0; }
+        
+        let sum = arr[iL];
+        let res = sum;
+
+        let iR = iL+1;
+        while (iR < arr.length){
+            sum += arr[iR];
+            if (sum <= 0){
+               
+                iL = indexNextPositive(arr, iR+1);
+                
+                if (iL == arr.length){ return res; }
+                sum = arr[iL];
+                iR = iL;
+            }
+            if (sum > res){
+                res = sum;
+            }
+
+            iR+=1;
+        }
+
+        return res;
+    }
+ 
+    function indexNextPositive(arr, iStart){
+        for (let i=iStart; i < arr.length; i++){
+            if (arr[i] > 0){
+                return i;
+            }
+        }
+        return arr.length;
+    }
+
+    
+    
+    alert( getMaxSubSum([-1, 2, 3, -9]) );
+    alert( getMaxSubSum([2, -1, 2, 3, -9]) );
+    alert( getMaxSubSum([-1, 2, 3, -9, 11]) );
+    alert( getMaxSubSum([-2, -1, 1, 2]) );
+    alert( getMaxSubSum([100, -9, 2, -3, 5]) );
+    alert( getMaxSubSum([1, 2, 3]) );     
+    alert( getMaxSubSum([-1, -2, -3]) ); // 0
+
+</script>
+    <h1>&emsp; ☝️ Refresh to rerun.</h1>  
+</body>
+
+</html>
